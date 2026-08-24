@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meguiar's Ankara | Premium Oto Yıkama & Detailing | Beytepe</title>
+<meta name="description" content="Meguiar's Ankara Beytepe'de premium oto yıkama, detaylı araç temizliği ve profesyonel araç bakım hizmetleri. Randevu: 0533 928 54 67">
+<meta name="keywords" content="Ankara oto yıkama, Beytepe oto yıkama, Çankaya oto yıkama, Ankara detailing, Ankara araç bakım, Beytepe detailing, premium oto yıkama Ankara, detaylı araç temizliği Ankara">
+<meta property="og:title" content="Meguiar's Ankara | Premium Automotive Care">
+<meta property="og:description" content="Beytepe'de premium oto yıkama ve detailing stüdyosu. Randevu: 0533 928 54 67">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoDetailing",
+  "name": "Meguiar's Ankara",
+  "image": "images/studio-3-lg.jpg",
+  "telephone": "+905339285467",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Enver Türkileri Sok. No:8/F",
+    "addressLocality": "Beytepe, Çankaya",
+    "postalCode": "06800",
+    "addressRegion": "Ankara",
+    "addressCountry": "TR"
+  },
+  "url": "https://www.google.com/maps/place/Meguiars+Ankara/",
+  "priceRange": "$$"
+}
+</script>
+<style>
+  :root{
+    --bg:#080808;
+    --bg-2:#111111;
+    --card:#151515;
+    --border:#252525;
+    --text:#F5F5F5;
+    --text-2:#A5A5A5;
+    --accent:#D71920;
+    --accent-hover:#F02930;
+    --white:#FFFFFF;
+    --font-display:'Manrope', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --ease:cubic-bezier(.16,.84,.44,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-weight:400;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  ::selection{background:var(--accent);color:var(--white);}
+
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.05;
+    text-transform:uppercase;
+  }
+
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--font-body);font-size:12px;font-weight:600;
+    letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--accent);}
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    padding:16px 32px;border-radius:4px;
+    font-family:var(--font-body);font-weight:600;font-size:13px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    transition:all .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--accent);color:var(--white);}
+  .btn-primary:hover{background:var(--accent-hover);transform:translateY(-2px);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.18);color:var(--text);}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+
+  section{position:relative;}
+  .section-pad{padding:140px 0;}
+  @media(max-width:900px){.section-pad{padding:88px 0;}}
+
+  .section-head{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    gap:40px;margin-bottom:64px;
+  }
+  .section-head p{max-width:340px;color:var(--text-2);font-size:15px;}
+  @media(max-width:800px){.section-head{flex-direction:column;align-items:flex-start;gap:20px;}}
+
+  [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  [data-reveal].is-visible{opacity:1;transform:translateY(0);}
+  @media(prefers-reduced-motion:reduce){
+    [data-reveal]{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:200;
+    padding:26px 0;transition:all .4s var(--ease);
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(8,8,8,0.82);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{
+    font-family:var(--font-display);font-weight:800;font-size:16px;
+    letter-spacing:0.04em;
+  }
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:40px;align-items:center;}
+  .nav-links a{
+    font-size:13px;font-weight:500;letter-spacing:0.04em;
+    color:var(--text-2);transition:color .3s;position:relative;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;
+    background:var(--accent);transition:width .3s var(--ease);
+  }
+  .nav-links a:hover{color:var(--text);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:20px;}
+  .nav-social{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.16);
+    display:flex;align-items:center;justify-content:center;
+    transition:all .3s var(--ease);flex-shrink:0;
+  }
+  .nav-social svg{width:16px;height:16px;stroke:var(--text-2);transition:stroke .3s;}
+  .nav-social:hover{border-color:var(--accent);background:rgba(215,25,32,0.08);}
+  .nav-social:hover svg{stroke:var(--accent);}
+  .nav-phone{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-2);}
+  .nav-phone svg{width:14px;height:14px;stroke:var(--accent);}
+  .hamburger{display:none;flex-direction:column;gap:5px;width:26px;z-index:201;}
+  .hamburger span{height:2px;background:var(--text);width:100%;transition:all .3s var(--ease);}
+  .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed;inset:0;background:var(--bg);z-index:190;
+    display:flex;flex-direction:column;justify-content:center;padding:32px;
+    transform:translateY(-100%);transition:transform .5s var(--ease);
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{
+    font-family:var(--font-display);font-size:32px;font-weight:700;
+    text-transform:uppercase;padding:14px 0;border-bottom:1px solid var(--border);
+  }
+
+  @media(max-width:900px){
+    .nav-links,.nav-phone,.nav-social{display:none;}
+    .hamburger{display:flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    height:100vh;min-height:640px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    position:relative;overflow:hidden;
+  }
+  .hero-media{position:absolute;inset:0;z-index:0;}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
+  .hero-media::after{
+    content:'';position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(8,8,8,0.55) 0%, rgba(8,8,8,0.35) 35%, rgba(8,8,8,0.85) 88%, #080808 100%),
+      linear-gradient(90deg, rgba(8,8,8,0.6) 0%, transparent 45%);
+  }
+  .hero-content{position:relative;z-index:2;padding-bottom:96px;}
+  .hero-content h1{
+    font-size:clamp(38px,7.5vw,88px);
+    margin-bottom:28px;
+  }
+  .hero-content h1 span{display:block;}
+  .hero-content h1 .accent-line{color:var(--accent);}
+  .hero-sub{max-width:460px;color:var(--text-2);font-size:16px;margin-bottom:40px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px;}
+  .hero-meta{
+    display:flex;gap:40px;align-items:center;
+    padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);
+    font-size:13px;color:var(--text-2);flex-wrap:wrap;
+  }
+  .hero-meta strong{color:var(--text);font-weight:600;}
+  .scroll-indicator{
+    position:absolute;bottom:32px;right:32px;z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    font-size:10px;letter-spacing:0.2em;color:var(--text-2);
+    writing-mode:vertical-rl;
+  }
+  .scroll-indicator .line{
+    width:1px;height:52px;background:linear-gradient(180deg, var(--accent), transparent);
+    writing-mode:horizontal-tb;
+    animation:scrollpulse 2s var(--ease) infinite;
+  }
+  @keyframes scrollpulse{0%{transform:scaleY(0.3);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}100%{transform:scaleY(0.3);transform-origin:bottom;}}
+
+  /* ---------- TRUST BAR ---------- */
+  .trust-bar{
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:var(--bg-2);
+  }
+  .trust-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .trust-item{
+    padding:26px 24px;text-align:center;
+    border-right:1px solid var(--border);
+    font-family:var(--font-display);font-size:12.5px;font-weight:700;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--text-2);
+  }
+  .trust-item:last-child{border-right:none;}
+  @media(max-width:800px){
+    .trust-grid{grid-template-columns:repeat(2,1fr);}
+    .trust-item{border-bottom:1px solid var(--border);}
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
+  .intro-grid h2{font-size:clamp(30px,4vw,50px);}
+  .intro-copy p{color:var(--text-2);font-size:16px;margin-bottom:22px;max-width:480px;}
+  .intro-copy .more-link{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:var(--font-display);font-weight:700;font-size:13px;
+    letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);
+    margin-top:8px;
+  }
+  @media(max-width:900px){.intro-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* ---------- SERVICES ---------- */
+  .services-head h2{font-size:clamp(32px,4.5vw,56px);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--border);border:1px solid var(--border);
+  }
+  .service-card{
+    background:var(--card);padding:36px 28px;min-height:260px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    position:relative;overflow:hidden;transition:background .4s var(--ease);
+  }
+  .service-card::before{
+    content:'';position:absolute;left:0;top:0;height:2px;width:0;
+    background:var(--accent);transition:width .45s var(--ease);
+  }
+  .service-card:hover{background:#191919;}
+  .service-card:hover::before{width:100%;}
+  .service-num{font-family:var(--font-display);font-size:12px;color:var(--text-2);letter-spacing:0.08em;}
+  .service-card h3{
+    font-size:19px;margin:20px 0 12px;text-transform:none;letter-spacing:-0.01em;
+  }
+  .service-card p{color:var(--text-2);font-size:14px;line-height:1.6;}
+  .service-arrow{
+    margin-top:20px;width:18px;height:18px;stroke:var(--text-2);
+    transition:transform .4s var(--ease), stroke .4s var(--ease);
+  }
+  .service-card:hover .service-arrow{stroke:var(--accent);transform:translate(4px,-4px);}
+  @media(max-width:1000px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.service-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FEATURED ---------- */
+  .featured{background:var(--bg-2);}
+  .featured-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;align-items:center;}
+  .featured-media{height:640px;overflow:hidden;position:relative;}
+  .featured-media img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease);}
+  .featured:hover .featured-media img{transform:scale(1.05);}
+  .featured-copy{padding:80px 80px 80px 90px;}
+  .featured-copy .eyebrow{color:var(--text-2);}
+  .featured-copy .eyebrow strong{color:var(--accent);}
+  .featured-copy h2{font-size:clamp(30px,4vw,52px);margin-bottom:24px;}
+  .featured-copy p{color:var(--text-2);font-size:16px;margin-bottom:36px;max-width:420px;}
+  @media(max-width:1000px){
+    .featured-grid{grid-template-columns:1fr;}
+    .featured-media{height:380px;}
+    .featured-copy{padding:56px 32px;}
+  }
+
+  /* ---------- WHY ---------- */
+  .why-list{border-top:1px solid var(--border);}
+  .why-item{
+    display:grid;grid-template-columns:80px 1fr 260px;align-items:center;gap:32px;
+    padding:36px 0;border-bottom:1px solid var(--border);
+    position:relative;cursor:default;transition:padding-left .4s var(--ease);
+  }
+  .why-item:hover{padding-left:16px;}
+  .why-num{font-family:var(--font-display);font-size:14px;color:var(--accent);font-weight:700;}
+  .why-item h3{font-size:clamp(20px,2.6vw,30px);text-transform:none;letter-spacing:-0.01em;}
+  .why-media{
+    height:100px;border-radius:4px;overflow:hidden;opacity:0;
+    transform:translateX(12px);transition:all .5s var(--ease);
+  }
+  .why-item:hover .why-media{opacity:1;transform:translateX(0);}
+  .why-media img{width:100%;height:100%;object-fit:cover;}
+  @media(max-width:800px){
+    .why-item{grid-template-columns:50px 1fr;}
+    .why-media{display:none;}
+  }
+
+  /* ---------- BEFORE / AFTER ---------- */
+  .ba-shell{
+    position:relative;max-width:1000px;margin:0 auto;
+    aspect-ratio:16/9;border-radius:6px;overflow:hidden;
+    border:1px solid var(--border);cursor:ew-resize;
+    user-select:none;
+  }
+  .ba-shell img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
+  .ba-after{z-index:1;}
+  .ba-before{z-index:2;clip-path:inset(0 50% 0 0);}
+  .ba-label{
+    position:absolute;top:20px;z-index:3;
+    font-family:var(--font-display);font-size:11px;font-weight:700;
+    letter-spacing:0.12em;padding:8px 14px;background:rgba(8,8,8,0.6);
+    backdrop-filter:blur(6px);border-radius:2px;
+  }
+  .ba-label.left{left:20px;}
+  .ba-label.right{right:20px;}
+  .ba-handle{
+    position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--accent);
+    z-index:4;transform:translateX(-1px);pointer-events:none;
+  }
+  .ba-handle::before{
+    content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:44px;height:44px;border-radius:50%;background:var(--accent);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 6 15 12 9 18'%3E%3C/polyline%3E%3Cpolyline points='15 6 9 12 15 18' transform='translate(0,0)'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;
+    box-shadow:0 0 0 6px rgba(215,25,32,0.18), 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .ba-caption{text-align:center;margin-top:24px;color:var(--text-2);font-size:13px;letter-spacing:0.04em;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:8px;
+  }
+  .g-item{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;}
+  .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
+  .g-item:hover img{transform:scale(1.08);}
+  .g-item::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.75) 100%);
+    opacity:0;transition:opacity .4s var(--ease);
+  }
+  .g-item:hover::after{opacity:1;}
+  .g-tag{
+    position:absolute;left:14px;bottom:14px;z-index:2;
+    font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    opacity:0;transform:translateY(8px);transition:all .4s var(--ease);
+  }
+  .g-item:hover .g-tag{opacity:1;transform:translateY(0);}
+  .g-item.tall{grid-row:span 2;}
+  .g-item.wide{grid-column:span 2;}
+  @media(max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px;}
+    .g-item.wide{grid-column:span 2;}
+  }
+  @media(max-width:560px){
+    .gallery-grid{grid-template-columns:1fr;}
+    .g-item.wide, .g-item.tall{grid-column:span 1;grid-row:span 1;}
+  }
+
+  .lightbox{
+    position:fixed;inset:0;background:rgba(6,6,6,0.94);z-index:300;
+    display:flex;align-items:center;justify-content:center;padding:40px;
+    opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
+  }
+  .lightbox.open{opacity:1;pointer-events:auto;}
+  .lightbox img{max-width:90vw;max-height:85vh;object-fit:contain;border-radius:4px;}
+  .lightbox-close{
+    position:absolute;top:32px;right:32px;width:44px;height:44px;
+    border:1px solid rgba(255,255,255,0.2);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .lightbox-close svg{width:16px;height:16px;stroke:var(--white);}
+
+  /* ---------- PROCESS ---------- */
+  .process-line{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;
+  }
+  .process-line::before{
+    content:'';position:absolute;top:20px;left:0;right:0;height:1px;background:var(--border);
+  }
+  .process-step{position:relative;padding-top:0;}
+  .p-num{
+    width:40px;height:40px;border-radius:50%;background:var(--card);
+    border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--accent);
+    margin-bottom:24px;position:relative;z-index:1;
+  }
+  .process-step h3{font-size:17px;text-transform:none;letter-spacing:-0.01em;margin-bottom:10px;}
+  .process-step p{color:var(--text-2);font-size:14px;max-width:240px;}
+  @media(max-width:800px){
+    .process-line{grid-template-columns:1fr;gap:0;}
+    .process-line::before{left:20px;top:0;bottom:0;width:1px;height:auto;right:auto;}
+    .process-step{padding-left:60px;padding-bottom:44px;}
+    .p-num{position:absolute;left:0;top:0;margin-bottom:0;}
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-track{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;}
+  .testi-track::-webkit-scrollbar{height:4px;}
+  .testi-track::-webkit-scrollbar-thumb{background:var(--border);}
+  .testi-card{
+    scroll-snap-align:start;flex:0 0 340px;background:var(--card);
+    border:1px solid var(--border);border-radius:6px;padding:32px;
+  }
+  .stars{color:var(--accent);letter-spacing:3px;font-size:15px;margin-bottom:18px;}
+  .testi-card p{color:var(--text-2);font-size:14.5px;line-height:1.7;margin-bottom:24px;min-height:84px;}
+  .testi-foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--text-2);border-top:1px solid var(--border);padding-top:16px;}
+  .testi-foot strong{color:var(--text);display:block;font-size:13.5px;margin-bottom:2px;}
+  .testi-note{
+    margin-top:28px;color:var(--text-2);font-size:13px;display:flex;align-items:center;gap:10px;
+  }
+  .testi-note a{color:var(--accent);font-weight:600;}
+
+  /* ---------- LOCATION ---------- */
+  .location{background:var(--bg-2);}
+  .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .location-copy{padding:100px 80px;display:flex;flex-direction:column;justify-content:center;}
+  .location-copy h2{font-size:clamp(30px,4vw,50px);margin-bottom:32px;}
+  .loc-line{display:flex;gap:14px;margin-bottom:16px;color:var(--text-2);font-size:15px;}
+  .loc-line strong{color:var(--text);font-weight:600;}
+  .loc-line svg{width:18px;height:18px;stroke:var(--accent);flex-shrink:0;margin-top:1px;}
+  .location-copy .btn{margin-top:32px;align-self:flex-start;}
+  .map-embed{min-height:440px;position:relative;filter:grayscale(0.4) contrast(1.1) brightness(0.85);}
+  .map-embed iframe{width:100%;height:100%;position:absolute;inset:0;border:0;}
+  @media(max-width:900px){
+    .location-grid{grid-template-columns:1fr;}
+    .location-copy{padding:64px 32px;}
+    .map-embed{min-height:340px;}
+  }
+
+  /* ---------- CONTACT / BOOKING ---------- */
+  .booking{
+    text-align:center;padding:160px 0;position:relative;overflow:hidden;
+  }
+  .booking::before{
+    content:'';position:absolute;top:50%;left:50%;width:900px;height:900px;
+    background:radial-gradient(circle, rgba(215,25,32,0.14) 0%, transparent 70%);
+    transform:translate(-50%,-50%);pointer-events:none;
+  }
+  .booking h2{font-size:clamp(34px,6vw,72px);margin-bottom:22px;position:relative;}
+  .booking-sub{color:var(--text-2);font-size:16px;margin-bottom:48px;position:relative;}
+  .booking-ctas{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;position:relative;}
+  .booking-phone{
+    font-family:var(--font-display);font-size:20px;font-weight:700;
+    letter-spacing:0.02em;
+  }
+  @media(max-width:600px){.booking{padding:110px 0;}}
+
+  /* ---------- MOBILE STICKY ---------- */
+  .mobile-sticky{
+    display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;
+    border-top:1px solid var(--border);background:rgba(8,8,8,0.96);
+    backdrop-filter:blur(14px);padding:12px;gap:10px;
+  }
+  .mobile-sticky a{
+    flex:1;text-align:center;padding:14px;border-radius:4px;
+    font-family:var(--font-display);font-size:12.5px;font-weight:700;
+    letter-spacing:0.06em;text-transform:uppercase;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .msticky-call{background:var(--accent);color:var(--white);}
+  .msticky-wa{border:1px solid rgba(255,255,255,0.2);color:var(--text);}
+  @media(max-width:900px){
+    .mobile-sticky{display:flex;}
+    body{padding-bottom:76px;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border);padding:64px 0 32px;}
+  .footer-grid{
+    display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:56px;
+  }
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{color:var(--text-2);font-size:14px;max-width:260px;}
+  .footer-col h4{
+    font-family:var(--font-body);font-size:12px;font-weight:600;
+    letter-spacing:0.1em;color:var(--text-2);text-transform:uppercase;margin-bottom:18px;
+  }
+  .footer-col a, .footer-col span{
+    display:block;font-size:14px;color:var(--text-2);margin-bottom:12px;transition:color .3s;
+  }
+  .footer-col a:hover{color:var(--accent);}
+  .footer-bottom{
+    border-top:1px solid var(--border);padding-top:24px;
+    display:flex;justify-content:space-between;color:var(--text-2);font-size:12.5px;flex-wrap:wrap;gap:10px;
+  }
+  @media(max-width:700px){.footer-grid{grid-template-columns:1fr;gap:32px;}}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">MEGUIAR'S <span>ANKARA</span></a>
+      <ul class="nav-links">
+        <li><a href="#top">Anasayfa</a></li>
+        <li><a href="#hizmetler">Hizmetler</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#galeri">Galeri</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+      <div class="nav-cta">
+        <span class="nav-phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          0533 928 54 67
+        </span>
+        <a href="https://www.instagram.com/meguiars_beytepe/" target="_blank" rel="noopener" class="nav-social" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="tel:+905339285467" class="btn btn-primary">RANDEVU AL</a>
+      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#top">Anasayfa</a>
+  <a href="#hizmetler">Hizmetler</a>
+  <a href="#hakkimizda">Hakkımızda</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#iletisim">İletişim</a>
+  <a href="tel:+905339285467" style="color:var(--accent);">0533 928 54 67</a>
+  <a href="https://www.instagram.com/meguiars_beytepe/" target="_blank" rel="noopener" style="font-size:16px;text-transform:none;font-weight:500;border-bottom:none;padding-top:24px;">Instagram'da Takip Edin →</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-media">
+      <img src="images/studio-3-lg.jpg" alt="Meguiar's Ankara stüdyosunda parlatılmış mavi BMW" style="object-position:center 30%;">
+    </div>
+    <div class="wrap hero-content">
+      <div class="eyebrow">PREMIUM AUTOMOTIVE CARE</div>
+      <h1>
+        <span>PARLAKLIK</span>
+        <span>BİR DETAY DEĞİL,</span>
+        <span class="accent-line">İŞİMİZ.</span>
+      </h1>
+      <p class="hero-sub">Profesyonel ürünler, titiz uygulama ve premium araç bakım deneyimi.</p>
+      <div class="hero-ctas">
+        <a href="tel:+905339285467" class="btn btn-primary">RANDEVU AL</a>
+        <a href="#hizmetler" class="btn btn-ghost">HİZMETLERİ KEŞFET</a>
+      </div>
+      <div class="hero-meta">
+        <span><strong>Beytepe · Çankaya · Ankara</strong></span>
+        <span>0533 928 54 67</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>SCROLL TO EXPLORE</span>
+      <span class="line"></span>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="wrap">
+      <div class="trust-grid">
+        <div class="trust-item">Profesyonel Ürünler</div>
+        <div class="trust-item">Titiz Uygulama</div>
+        <div class="trust-item">Premium Bakım</div>
+        <div class="trust-item">Randevulu Hizmet</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section-pad" id="hakkimizda">
+    <div class="wrap intro-grid">
+      <div data-reveal>
+        <div class="eyebrow">MEGUIAR'S ANKARA</div>
+        <h2>ARACINIZI SADECE YIKAMIYORUZ. ONA ÖZEN GÖSTERİYORUZ.</h2>
+      </div>
+      <div class="intro-copy" data-reveal>
+        <p>Aracınızın temizliği yalnızca dış görünüşten ibaret değildir. Doğru ürün, doğru teknik ve detaylara gösterilen özen; aracınızın görünümünü ve değerini korur.</p>
+        <p>Meguiar's Ankara olarak premium araç bakım deneyimini Beytepe'de sunuyoruz.</p>
+        <a href="#hizmetler" class="more-link">DAHA FAZLA BİLGİ →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-pad" id="hizmetler">
+    <div class="wrap">
+      <div class="section-head services-head" data-reveal>
+        <h2>PROFESYONEL<br>ARAÇ BAKIMI</h2>
+        <p>Aracınızın ihtiyacına uygun profesyonel bakım ve temizlik çözümleri.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="service-grid" data-reveal>
+
+        <div class="service-card">
+          <div><span class="service-num">01</span>
+            <h3>Premium Oto Yıkama</h3>
+            <p>Profesyonel ürünler ve özenli uygulama ile aracınızda temiz ve parlak görünüm.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">02</span>
+            <h3>Detaylı İç Temizlik</h3>
+            <p>Koltuklar, plastik yüzeyler, konsol, detay noktaları ve iç mekanın kapsamlı temizliği.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">03</span>
+            <h3>Detaylı Dış Bakım</h3>
+            <p>Boya yüzeyinin profesyonel şekilde temizlenmesi ve bakımının yapılması.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">04</span>
+            <h3>Pasta Cila</h3>
+            <p>Boya yüzeyindeki matlık ve yüzeysel kusurların giderilmesine yönelik profesyonel uygulama.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">05</span>
+            <h3>Seramik Kaplama</h3>
+            <p>Boya yüzeyinin korunmasına ve parlaklığının artırılmasına yönelik premium kaplama hizmeti.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">06</span>
+            <h3>Motor Temizliği</h3>
+            <p>Motor bölmesinin profesyonel temizlik ve bakım uygulaması.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">07</span>
+            <h3>Jant &amp; Lastik Bakımı</h3>
+            <p>Jant ve lastiklerin detaylı temizliği ve görünüm bakımı.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+        <div class="service-card">
+          <div><span class="service-num">08</span>
+            <h3>Boya Koruma</h3>
+            <p>Aracın dış yüzeyinin korunmasına yönelik profesyonel bakım uygulamaları.</p>
+          </div>
+          <svg class="service-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED SERVICE -->
+  <section class="featured">
+    <div class="featured-grid">
+      <div class="featured-media" data-reveal>
+        <img src="images/studio-6-lg.jpg" alt="Seramik kaplama sonrası kusursuz yansıma, Meguiar's Ankara">
+      </div>
+      <div class="featured-copy" data-reveal>
+        <div class="eyebrow"><strong>01</strong> / PREMIUM DETAILING</div>
+        <h2>ARACINIZIN GERÇEK PARLAKLIĞINI ORTAYA ÇIKARIN.</h2>
+        <p>Yüzey hazırlığından koruyucu uygulamaya kadar her aşama; doğru ürün seçimi ve titiz işçilikle aracınızın gerçek karakterini ortaya çıkarır.</p>
+        <a href="#iletisim" class="btn btn-primary">DETAYLI BİLGİ AL</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY MEGUIAR'S -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>NEDEN<br>MEGUIAR'S ANKARA?</h2>
+      </div>
+      <div class="why-list" data-reveal>
+        <div class="why-item">
+          <span class="why-num">01</span>
+          <h3>Profesyonel Ürünler</h3>
+          <div class="why-media"><img src="images/studio-1-sm.jpg" alt="Stüdyoda profesyonel bakım ürünleri ile hazırlanan araç"></div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">02</span>
+          <h3>Detaylara Özen</h3>
+          <div class="why-media"><img src="images/studio-2-sm.jpg" alt="Detaylara özenle uygulanan bakım">
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">03</span>
+          <h3>Profesyonel Uygulama</h3>
+          <div class="why-media"><img src="images/studio-4-sm.jpg" alt="Profesyonel uygulama, Meguiar's Ankara stüdyosu"></div>
+        </div>
+        <div class="why-item">
+          <span class="why-num">04</span>
+          <h3>Premium Hizmet Deneyimi</h3>
+          <div class="why-media"><img src="images/studio-5-sm.jpg" alt="Meguiar's Beytepe yetkili uygulama merkezi girişi"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="section-pad" style="background:var(--bg-2);">
+    <div class="wrap">
+      <div class="section-head" data-reveal style="justify-content:center;text-align:center;flex-direction:column;align-items:center;">
+        <h2>FARKI GÖRÜN.</h2>
+        <p>Kaydırıcıyı sürükleyerek uygulama öncesi ve sonrası farkı keşfedin.</p>
+      </div>
+      <div class="ba-shell" id="baShell" data-reveal>
+        <img class="ba-after" src="images/ba-after.jpg" alt="Detailing sonrası parlak boya yüzeyi">
+        <img class="ba-before" id="baBefore" src="images/ba-before.jpg" alt="Detailing öncesi mat, donuk boya yüzeyi">
+        <div class="ba-label left">ÖNCE</div>
+        <div class="ba-label right">SONRA</div>
+        <div class="ba-handle" id="baHandle"></div>
+      </div>
+      <p class="ba-caption">Pasta cila &amp; seramik kaplama uygulamasının etkisini gösteren temsili karşılaştırma</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section-pad" id="galeri">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>DETAYLAR<br>FARK YARATIR.</h2>
+        <p>Stüdyomuzdan kareler.</p>
+      </div>
+      <div class="gallery-grid" data-reveal>
+        <div class="g-item tall" data-full="images/studio-3-lg.jpg">
+          <img src="images/studio-3-sm.jpg" alt="Mavi BMW, stüdyo içi parlaklık">
+          <span class="g-tag">Boya Yüzeyi</span>
+        </div>
+        <div class="g-item" data-full="images/studio-1-lg.jpg">
+          <img src="images/studio-1-sm.jpg" alt="Gri BMW 5 Serisi, stüdyoda">
+          <span class="g-tag">Premium Araç</span>
+        </div>
+        <div class="g-item wide" data-full="images/studio-6-lg.jpg">
+          <img src="images/studio-6-sm.jpg" alt="Seramik kaplama sonrası kusursuz yüzey">
+          <span class="g-tag">Seramik Kaplama</span>
+        </div>
+        <div class="g-item" data-full="images/studio-2-lg.jpg">
+          <img src="images/studio-2-sm.jpg" alt="Siyah SUV, stüdyo içi">
+          <span class="g-tag">Detaylı Dış Bakım</span>
+        </div>
+        <div class="g-item tall" data-full="images/studio-4-lg.jpg">
+          <img src="images/studio-4-sm.jpg" alt="Mercedes G-Class, profesyonel bakım sonrası">
+          <span class="g-tag">Premium SUV</span>
+        </div>
+        <div class="g-item wide" data-full="images/studio-5-lg.jpg">
+          <img src="images/studio-5-sm.jpg" alt="Meguiar's Beytepe yetkili uygulama merkezi, dış cephe">
+          <span class="g-tag">Stüdyo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section-pad" style="background:var(--bg-2);">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>NASIL<br>ÇALIŞIYORUZ?</h2>
+      </div>
+      <div class="process-line" data-reveal>
+        <div class="process-step">
+          <div class="p-num">01</div>
+          <h3>Randevu</h3>
+          <p>Telefon veya WhatsApp üzerinden size uygun tarih ve saati belirleriz.</p>
+        </div>
+        <div class="process-step">
+          <div class="p-num">02</div>
+          <h3>Araç Analizi</h3>
+          <p>Aracınızın yüzeyi ve ihtiyaçları incelenir, size özel bir uygulama planlanır.</p>
+        </div>
+        <div class="process-step">
+          <div class="p-num">03</div>
+          <h3>Profesyonel Uygulama</h3>
+          <p>Profesyonel ürünler ve titiz teknikle bakım süreci uygulanır.</p>
+        </div>
+        <div class="process-step">
+          <div class="p-num">04</div>
+          <h3>Teslim</h3>
+          <p>Aracınız son kontrolden geçirilerek size teslim edilir.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>MÜŞTERİLERİMİZİN<br>DENEYİMİ</h2>
+      </div>
+      <div class="testi-track" data-reveal>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>Google yorumları burada, işletme sahibinin onayıyla senkronize edildikçe görüntülenecektir.</p>
+          <div class="testi-foot"><span>Yer tutucu</span><span>Google Reviews</span></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>Gerçek müşteri yorumları eklenene kadar bu alan boş bırakılmıştır.</p>
+          <div class="testi-foot"><span>Yer tutucu</span><span>Google Reviews</span></div>
+        </div>
+        <div class="testi-card">
+          <div class="stars">★★★★★</div>
+          <p>Uydurma yorum yayınlanmaz — gerçek geri bildirimler yayına alınacaktır.</p>
+          <div class="testi-foot"><span>Yer tutucu</span><span>Google Reviews</span></div>
+        </div>
+      </div>
+      <div class="testi-note" data-reveal>
+        Güncel değerlendirmeler için <a href="https://www.google.com/maps/place/Meguiars+Ankara/" target="_blank" rel="noopener">Google profilimizi</a> ziyaret edebilirsiniz.
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location">
+    <div class="location-grid">
+      <div class="location-copy" data-reveal>
+        <h2>BEYTEPE'DE SİZİ BEKLİYORUZ.</h2>
+        <div class="loc-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Beytepe, Enver Türkileri Sok. No:8/F</strong><br>06800 Çankaya / Ankara</span>
+        </div>
+        <div class="loc-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span><strong>0533 928 54 67</strong></span>
+        </div>
+        <a href="https://www.google.com/maps/place/Meguiars+Ankara/" target="_blank" rel="noopener" class="btn btn-primary">YOL TARİFİ AL</a>
+      </div>
+      <div class="map-embed" data-reveal>
+        <iframe src="https://www.google.com/maps?q=Meguiars+Ankara,+Enver+T%C3%BCrkileri+Sok.+No:8%2FF,+Beytepe,+%C3%87ankaya%2FAnkara&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Meguiar's Ankara konum haritası"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOOKING -->
+  <section class="booking" id="iletisim">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;" data-reveal>RANDEVU</div>
+      <h2 data-reveal>ARACINIZ İÇİN<br>BİR RANDEVU ALIN.</h2>
+      <p class="booking-sub" data-reveal>Premium bakım deneyimi için bizimle iletişime geçin.</p>
+      <div class="booking-ctas" data-reveal>
+        <a href="tel:+905339285467" class="btn btn-primary booking-phone">0533 928 54 67</a>
+        <a href="https://wa.me/905339285467" target="_blank" rel="noopener" class="btn btn-ghost">WHATSAPP'TAN RANDEVU AL</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-close" id="lightboxClose">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </div>
+  <img id="lightboxImg" src="" alt="Galeri görseli">
+</div>
+
+<div class="mobile-sticky">
+  <a href="tel:+905339285467" class="msticky-call">ARA</a>
+  <a href="https://wa.me/905339285467" target="_blank" rel="noopener" class="msticky-wa">WHATSAPP</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">MEGUIAR'S <span>ANKARA</span></div>
+        <p>Premium automotive care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigasyon</h4>
+        <a href="#top">Anasayfa</a>
+        <a href="#hizmetler">Hizmetler</a>
+        <a href="#hakkimizda">Hakkımızda</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#iletisim">İletişim</a>
+      </div>
+      <div class="footer-col">
+        <h4>İletişim</h4>
+        <a href="tel:+905339285467">0533 928 54 67</a>
+        <span>Beytepe, Çankaya / Ankara</span>
+        <a href="https://wa.me/905339285467" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/meguiars_beytepe/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Meguiar's Ankara. All rights reserved.</span>
+      <span>Beytepe, Enver Türkileri Sok. No:8/F, 06800 Çankaya/Ankara</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }));
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // Before / after slider
+  const baShell = document.getElementById('baShell');
+  const baBefore = document.getElementById('baBefore');
+  const baHandle = document.getElementById('baHandle');
+  let dragging = false;
+
+  function setSlider(x){
+    const rect = baShell.getBoundingClientRect();
+    let pct = ((x - rect.left) / rect.width) * 100;
+    pct = Math.max(0, Math.min(100, pct));
+    baBefore.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+    baHandle.style.left = pct + '%';
+  }
+  baShell.addEventListener('pointerdown', (e) => { dragging = true; setSlider(e.clientX); });
+  window.addEventListener('pointermove', (e) => { if(dragging) setSlider(e.clientX); });
+  window.addEventListener('pointerup', () => dragging = false);
+  baShell.addEventListener('touchstart', (e) => setSlider(e.touches[0].clientX), {passive:true});
+  baShell.addEventListener('touchmove', (e) => setSlider(e.touches[0].clientX), {passive:true});
+
+  // Gallery lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.g-item').forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxImg.src = item.getAttribute('data-full');
+      lightbox.classList.add('open');
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+</script>
+
+</body>
+</html>
