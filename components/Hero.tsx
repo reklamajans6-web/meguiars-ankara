@@ -1,194 +1,170 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { MapPin, Phone, MessageCircle, ExternalLink, Sparkles, Clock } from "lucide-react";
+import { MessageCircle, Phone, MapPin, ExternalLink, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
 import { BUSINESS, getWhatsAppUrl } from "@/lib/data";
 
 export default function Hero() {
-  const bgRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handler = () => {
-      if (bgRef.current) {
-        bgRef.current.style.transform = `translateY(${window.scrollY * 0.2}px)`;
-      }
-    };
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-28 pb-16 lg:py-32"
+      className="relative pt-28 pb-16 lg:pt-36 lg:pb-24 bg-[#f8f9fa] border-b border-neutral-200 overflow-hidden"
     >
-      {/* ── Background Image & Dark Overlays ── */}
-      <div
-        ref={bgRef}
-        className="absolute inset-0 will-change-transform"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1614026480209-cd9934144671?w=1920&q=90&auto=format&fit=crop')",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          transform: "scale(1.08)",
-        }}
-      />
+      {/* ── Background Subtle Architectural Grid Lines ── */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40 pointer-events-none" />
 
-      {/* Multi-layer atmospheric dark overlay for maximum readability & balance */}
-      <div className="absolute inset-0 bg-[#0a0a0a]/80 backdrop-blur-[1px]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-[#0a0a0a]/70" />
-      <div className="absolute inset-0 bg-radial from-transparent via-[#0a0a0a]/40 to-[#0a0a0a]/90" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-      {/* ── Balanced Main Content Container ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          
-          {/* Left Column: Heading & CTAs (7 cols) */}
+          {/* ── Left Column: Editorial & Conversion (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Eyebrow */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] mb-6">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c9a96e] animate-pulse" />
-              <span className="text-[11px] tracking-[0.25em] uppercase font-semibold text-[#c9a96e]">
-                Meguiar&apos;s Ankara · Beytepe
-              </span>
+            
+            {/* Category Tag */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-neutral-200 text-[#e4002b] text-[11px] font-bold tracking-[0.2em] uppercase mb-6 shadow-2xs">
+              <span className="w-2 h-2 bg-[#e4002b]" />
+              BEYTEPE · ÇANKAYA / PREMİUM OTO YIKAMA
             </div>
 
             {/* Main Headline */}
-            <h1 className="font-heading font-bold text-white leading-[1.08] tracking-tight mb-6 text-4xl sm:text-5xl lg:text-6xl">
+            <h1 className="font-heading font-extrabold text-neutral-950 text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.08] mb-6">
               Aracınız İçin <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-white/70">
-                Profesyonel
-              </span>{" "}
-              <span style={{ color: "#c9a96e" }}>Bakım.</span>
+              <span className="text-[#e4002b]">Kusursuz Temizlik</span> & Detailing.
             </h1>
 
-            {/* Subtitle */}
-            <p className="text-white/60 text-base sm:text-lg font-light leading-relaxed mb-8 max-w-xl">
-              Beytepe&apos;de profesyonel oto yıkama ve araç bakım hizmetleri. 
-              Aracınızın temizliğini, parlaklığını ve değerini uzman dokunuşlarla yenileyin.
+            {/* Clean Explanatory Copy */}
+            <p className="text-neutral-600 text-base sm:text-lg leading-relaxed font-normal mb-8 max-w-xl">
+              Beytepe&apos;de pH dengeli Meguiar&apos;s bakım ürünleri, çiziksiz mikrofiber yıkama protokolü ve profesyonel yüzey düzeltme uygulamaları. Aracınızın ilk günkü parlaklığını koruyun.
             </p>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-10">
+            {/* Conversion CTA Group */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-10">
               <a
                 href={getWhatsAppUrl("appointment")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 text-xs font-bold tracking-[0.15em] uppercase text-black transition-all duration-200 hover:opacity-90 shadow-lg shadow-[#c9a96e]/10"
-                style={{ background: "#c9a96e" }}
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#e4002b] hover:bg-[#c70025] text-white text-xs font-bold tracking-[0.15em] uppercase transition-all shadow-md hover:shadow-lg"
               >
-                <MessageCircle size={16} />
-                Randevu Al
+                <MessageCircle size={17} />
+                Randevu Al (WhatsApp)
               </a>
+
               <a
-                href={getWhatsAppUrl("general")}
+                href={`tel:${BUSINESS.phoneRaw}`}
+                className="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white hover:bg-neutral-100 text-neutral-900 border border-neutral-300 text-xs font-bold tracking-[0.12em] uppercase transition-colors"
+              >
+                <Phone size={15} className="text-[#e4002b]" />
+                <span className="tabular-nums">{BUSINESS.phone}</span>
+              </a>
+
+              <a
+                href={BUSINESS.maps.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-4 text-xs font-semibold tracking-[0.12em] uppercase text-white/80 border border-white/20 hover:border-white/50 hover:text-white hover:bg-white/[0.04] transition-all duration-200"
+                className="inline-flex items-center justify-center gap-1.5 px-5 py-4 bg-white hover:bg-neutral-100 text-neutral-600 hover:text-neutral-950 border border-neutral-200 text-xs font-semibold uppercase tracking-wider transition-colors"
               >
-                WhatsApp&apos;tan Ulaş
+                <ExternalLink size={14} />
+                Harita
               </a>
             </div>
 
-            {/* Quick Feature Badges */}
-            <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/[0.08] w-full max-w-lg">
-              <div>
-                <div className="text-white font-heading font-semibold text-sm sm:text-base">Özenli Detay</div>
-                <div className="text-white/40 text-xs mt-0.5">Titiz uygulama</div>
+            {/* Key Specifications Strip */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-neutral-200 w-full">
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={16} className="text-[#e4002b] flex-shrink-0" />
+                <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">
+                  pH Nötr Kimyasallar
+                </span>
               </div>
-              <div>
-                <div className="text-white font-heading font-semibold text-sm sm:text-base">Premium Ürün</div>
-                <div className="text-white/40 text-xs mt-0.5">Kaliteli malzeme</div>
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={16} className="text-[#e4002b] flex-shrink-0" />
+                <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">
+                  Çiziksiz Yıkama
+                </span>
               </div>
-              <div>
-                <div className="text-white font-heading font-semibold text-sm sm:text-base">Merkezi Konum</div>
-                <div className="text-white/40 text-xs mt-0.5">Beytepe / Çankaya</div>
+              <div className="flex items-center gap-2.5">
+                <CheckCircle2 size={16} className="text-[#e4002b] flex-shrink-0" />
+                <span className="text-xs font-bold text-neutral-800 uppercase tracking-wider">
+                  Boya ve Vernik Güvenliği
+                </span>
               </div>
             </div>
+
           </div>
 
-          {/* Right Column: Studio Card & Quick Access (5 cols) */}
+          {/* ── Right Column: Studio Card & Real Google Maps Image (5 cols) ── */}
           <div className="lg:col-span-5 w-full">
-            <div className="relative bg-[#111318]/90 border border-white/[0.1] backdrop-blur-md p-6 sm:p-8 shadow-2xl">
+            <div className="bg-white border border-neutral-200 shadow-xl overflow-hidden">
               
-              {/* Subtle top gold accent line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "#c9a96e" }} />
-
-              {/* Card Header */}
-              <div className="flex items-center justify-between pb-5 border-b border-white/[0.08] mb-6">
-                <div>
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-[#c9a96e] font-semibold block">
-                    Stüdyo Bilgisi
+              {/* Card Top Label Bar */}
+              <div className="px-5 py-3.5 bg-neutral-900 text-white flex items-center justify-between border-b border-neutral-800">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[11px] font-bold tracking-[0.15em] uppercase">
+                    Stüdyo Canlı Bilgisi
                   </span>
-                  <h3 className="font-heading font-bold text-white text-lg mt-0.5">
-                    Meguiar&apos;s Ankara
-                  </h3>
                 </div>
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-medium">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  Hizmet Veriyor
+                <span className="text-[11px] font-mono text-neutral-400">
+                  Beytepe / Ankara
+                </span>
+              </div>
+
+              {/* Real Google Maps Studio Photo */}
+              <div className="relative aspect-[16/11] bg-neutral-100 overflow-hidden border-b border-neutral-200 group">
+                <img
+                  src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmARKUx8JAX2BDI1381iZmI2ZnYlJT-9jFqYYrxuQO26kuPqJCm0rPRhGxWuPZ9afylvgbjkJQYjCwJd0_v7Y6M5S8o5FhbC3OUJGNbaUqfqQcp4hWsgZPef1G8VLrzzSDPL2IL4bfmWUw=w1200-h800-k-no"
+                  alt="Meguiar's Ankara Beytepe oto yıkama stüdyosu"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-103"
+                  loading="eager"
+                />
+                <div className="absolute bottom-3 left-3 bg-neutral-900/85 backdrop-blur-xs text-white text-[10px] font-bold px-2.5 py-1 tracking-wider uppercase">
+                  Google Haritalar Gerçek Stüdyo Fotoğrafı
                 </div>
               </div>
 
-              {/* Info Rows */}
-              <div className="space-y-4 mb-6">
+              {/* Studio Info Table */}
+              <div className="p-5 sm:p-6 space-y-4">
+                
                 <div className="flex items-start gap-3">
-                  <MapPin size={17} className="text-[#c9a96e] mt-0.5 flex-shrink-0" />
+                  <MapPin size={17} className="text-[#e4002b] mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="text-white/40 text-xs block">Konum</span>
-                    <span className="text-white text-xs sm:text-sm leading-snug">
-                      {BUSINESS.address.full}
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block">
+                      Adres
                     </span>
+                    <p className="text-xs sm:text-sm font-semibold text-neutral-900 leading-snug">
+                      {BUSINESS.address.full}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <Phone size={17} className="text-[#c9a96e] mt-0.5 flex-shrink-0" />
+                <div className="flex items-start gap-3 pt-3 border-t border-neutral-100">
+                  <Phone size={17} className="text-[#e4002b] mt-0.5 flex-shrink-0" />
                   <div>
-                    <span className="text-white/40 text-xs block">Doğrudan Hat</span>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-400 block">
+                      Telefon & WhatsApp
+                    </span>
                     <a
                       href={`tel:${BUSINESS.phoneRaw}`}
-                      className="text-white text-sm sm:text-base font-semibold hover:text-[#c9a96e] transition-colors"
+                      className="text-sm font-bold text-neutral-900 hover:text-[#e4002b] transition-colors tabular-nums"
                     >
                       {BUSINESS.phone}
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3">
-                  <Sparkles size={17} className="text-[#c9a96e] mt-0.5 flex-shrink-0" />
-                  <div>
-                    <span className="text-white/40 text-xs block">Hizmet Alanı</span>
-                    <span className="text-white text-xs sm:text-sm">
-                      Detaylı İç & Dış Temizlik, Pasta Cila, Boya Koruma
-                    </span>
-                  </div>
+                {/* Direct Action Link */}
+                <div className="pt-3">
+                  <a
+                    href={BUSINESS.maps.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3 bg-neutral-900 hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
+                  >
+                    <ExternalLink size={13} />
+                    Google Haritalar&apos;da Yol Tarifi Al
+                  </a>
                 </div>
+
               </div>
 
-              {/* Card Action Buttons */}
-              <div className="grid grid-cols-2 gap-3 pt-2">
-                <a
-                  href={BUSINESS.maps.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-3 px-3 text-xs font-semibold text-white/80 bg-white/[0.05] hover:bg-white/[0.1] border border-white/[0.1] transition-all text-center"
-                >
-                  <ExternalLink size={13} />
-                  Yol Tarifi
-                </a>
-                <a
-                  href={getWhatsAppUrl("general")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-1.5 py-3 px-3 text-xs font-bold text-black uppercase tracking-wider transition-opacity hover:opacity-90 text-center"
-                  style={{ background: "#c9a96e" }}
-                >
-                  <MessageCircle size={13} />
-                  WhatsApp
-                </a>
-              </div>
             </div>
           </div>
 

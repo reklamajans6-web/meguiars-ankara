@@ -1,49 +1,63 @@
 "use client";
 
 import { useState } from "react";
-import { GALLERY_CATEGORIES, GALLERY_IMAGES, BUSINESS } from "@/lib/data";
-import { ExternalLink, Maximize2, X, Sparkles } from "lucide-react";
+import { GALLERY_ITEMS, BUSINESS } from "@/lib/data";
+import { ExternalLink, Maximize2, X, Image as ImageIcon } from "lucide-react";
+
+const CATEGORIES = [
+  { id: "all", label: "Tümü" },
+  { id: "wash", label: "Dış Yıkama" },
+  { id: "interior", label: "İç Detay" },
+  { id: "polish", label: "Pasta & Cila" },
+  { id: "wheels", label: "Jant & Detay" },
+];
 
 export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-  const [selectedImage, setSelectedImage] = useState<typeof GALLERY_IMAGES[number] | null>(null);
+  const [activeCategory, setActiveCategory] = useState("all");
+  const [selectedImage, setSelectedImage] = useState<typeof GALLERY_ITEMS[number] | null>(null);
 
-  const filteredImages =
+  const filteredItems =
     activeCategory === "all"
-      ? GALLERY_IMAGES
-      : GALLERY_IMAGES.filter((img) => img.category === activeCategory);
+      ? GALLERY_ITEMS
+      : GALLERY_ITEMS.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="galeri" className="section-py bg-[#0a0a0a] relative">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        
-        {/* ── Section Header (Balanced & Centered) ── */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center justify-center gap-2 mb-3">
-            <span className="w-8 h-[1px] bg-[#c9a96e]" />
-            <span className="text-[11px] tracking-[0.3em] uppercase font-semibold text-[#c9a96e]">
-              Uygulama & Sonuçlar
-            </span>
-            <span className="w-8 h-[1px] bg-[#c9a96e]" />
+    <section id="galeri" className="section-py bg-[#f8f9fa] border-y border-neutral-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Section Header ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-neutral-200">
+          <div>
+            <div className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#e4002b] mb-2">
+              Gerçek Uygulama Arşivi
+            </div>
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-neutral-950 tracking-tight">
+              Stüdyo & Haritalar Galerisi
+            </h2>
           </div>
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
-            Temizlikten Sonra <span style={{ color: "#c9a96e" }}>Farkı Görün</span>
-          </h2>
-          <p className="text-white/50 text-sm sm:text-base font-light leading-relaxed">
-            Meguiar&apos;s Ankara stüdyosunda gerçekleştirdiğimiz detaylı temizlik, pasta cila ve bakım uygulamalarından kareler.
-          </p>
+
+          <a
+            href={BUSINESS.maps.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold uppercase tracking-wider bg-white hover:bg-neutral-100 text-neutral-900 border border-neutral-300 transition-colors shadow-2xs self-start md:self-auto"
+          >
+            <ExternalLink size={14} className="text-[#e4002b]" />
+            Google Haritalar Profilini İncele
+          </a>
         </div>
 
         {/* ── Category Filter Tabs ── */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
-          {GALLERY_CATEGORIES.map((cat) => (
+        <div className="flex flex-wrap gap-2 mb-8">
+          {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
+              type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`px-5 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-200 ${
+              className={`px-4 py-2 text-xs font-bold tracking-wider uppercase transition-colors cursor-pointer border ${
                 activeCategory === cat.id
-                  ? "bg-[#c9a96e] text-black shadow-md"
-                  : "bg-white/[0.04] text-white/60 hover:text-white hover:bg-white/[0.08] border border-white/[0.08]"
+                  ? "bg-neutral-950 text-white border-neutral-950"
+                  : "bg-white text-neutral-600 hover:bg-neutral-100 border-neutral-200"
               }`}
             >
               {cat.label}
@@ -53,95 +67,79 @@ export default function Gallery() {
 
         {/* ── Gallery Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {filteredImages.map((img) => (
+          {filteredItems.map((item) => (
             <div
-              key={img.id}
-              onClick={() => setSelectedImage(img)}
-              className="group relative overflow-hidden bg-[#111318] border border-white/[0.06] aspect-[4/3] cursor-pointer"
+              key={item.id}
+              onClick={() => setSelectedImage(item)}
+              className="bg-white border border-neutral-200 overflow-hidden group cursor-pointer shadow-2xs hover:shadow-md transition-shadow"
             >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                loading="lazy"
-              />
+              {/* Photo Box */}
+              <div className="relative aspect-[4/3] bg-neutral-100 overflow-hidden">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
 
-              {/* Dark Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
-                <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-[#c9a96e] mb-1">
-                  Meguiar&apos;s Detailing
-                </span>
-                <p className="text-white font-heading font-semibold text-sm leading-snug">
-                  {img.title}
-                </p>
-                <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 flex items-center justify-center text-white/80">
-                  <Maximize2 size={14} />
+                {/* Source Badge */}
+                <div className="absolute top-2.5 left-2.5 bg-neutral-950/80 backdrop-blur-xs text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider">
+                  {item.source}
                 </div>
+
+                {/* Hover Zoom Icon */}
+                <div className="absolute inset-0 bg-neutral-950/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                  <Maximize2 size={20} />
+                </div>
+              </div>
+
+              {/* Title Strip */}
+              <div className="p-3.5 border-t border-neutral-100 bg-white flex items-center justify-between">
+                <span className="text-xs font-bold text-neutral-900 truncate">
+                  {item.title}
+                </span>
+                <span className="text-[10px] font-mono text-neutral-400 flex-shrink-0 ml-2">
+                  {item.categoryLabel}
+                </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* ── Google Maps Photos Direct Button & Trust Note ── */}
-        <div className="mt-12 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#111318]/50 p-6 border">
-          <div className="flex items-center gap-3.5 text-left">
-            <div className="w-10 h-10 rounded-full bg-white/[0.05] border border-white/[0.1] flex items-center justify-center flex-shrink-0 text-[#c9a96e]">
-              <Sparkles size={18} />
-            </div>
-            <div>
-              <div className="text-white font-heading font-semibold text-sm sm:text-base">
-                Google Haritalar Fotoğrafları
-              </div>
-              <div className="text-white/45 text-xs">
-                Müşterilerimizin ve stüdyomuzun Google profilindeki tüm fotoğrafları inceleyin
-              </div>
-            </div>
-          </div>
-
-          <a
-            href={BUSINESS.maps.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-bold tracking-wider uppercase text-white bg-white/[0.06] hover:bg-white/[0.12] border border-white/[0.15] hover:border-white/30 transition-all flex-shrink-0"
-          >
-            <ExternalLink size={14} />
-            Google&apos;da Tüm Fotoğrafları Gör
-          </a>
-        </div>
-
       </div>
 
-      {/* ── Lightbox Modal ── */}
+      {/* ── Modal Lightbox ── */}
       {selectedImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
+          className="fixed inset-0 z-50 bg-neutral-950/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
           onClick={() => setSelectedImage(null)}
         >
           <button
+            type="button"
             onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 text-white/70 hover:text-white p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            className="absolute top-5 right-5 text-white/80 hover:text-white p-2 bg-neutral-900 border border-neutral-700"
             aria-label="Kapat"
           >
-            <X size={24} />
+            <X size={20} />
           </button>
 
           <div
-            className="max-w-4xl w-full bg-[#111318] border border-white/10 overflow-hidden shadow-2xl"
+            className="bg-white border border-neutral-300 max-w-4xl w-full overflow-hidden shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full bg-black">
+            <div className="relative aspect-[16/10] bg-neutral-950">
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
                 className="w-full h-full object-contain"
               />
             </div>
-            <div className="p-5 flex items-center justify-between bg-[#111318]">
+            <div className="p-5 flex items-center justify-between bg-white border-t border-neutral-200">
               <div>
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[#c9a96e] font-semibold block">
-                  Meguiar&apos;s Ankara
-                </span>
-                <h4 className="text-white font-heading font-semibold text-base mt-0.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-[#e4002b]">
+                  {selectedImage.source} · {selectedImage.categoryLabel}
+                </div>
+                <h4 className="text-base font-bold text-neutral-950 mt-0.5">
                   {selectedImage.title}
                 </h4>
               </div>
@@ -149,7 +147,7 @@ export default function Gallery() {
                 href={BUSINESS.maps.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-white/60 hover:text-white underline underline-offset-4"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-800 hover:text-[#e4002b] underline"
               >
                 Google Haritalar
                 <ExternalLink size={12} />

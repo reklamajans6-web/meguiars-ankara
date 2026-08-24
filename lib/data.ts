@@ -1,12 +1,12 @@
 // ─────────────────────────────────────────────────────────────────
-//  Meguiar's Ankara — Site İçerik Veritabanı
-//  Tüm metin, hizmet ve iletişim bilgileri burada yönetilir.
-//  İşletme sahibi sadece bu dosyayı düzenleyerek siteyi güncelleyebilir.
+//  Meguiar's Ankara — Veri Modeli ve İçerik Yönetimi
+//  Swiss Anchor Sistemi: Doğrulanmış gerçek işletme verileri.
 // ─────────────────────────────────────────────────────────────────
 
 export const BUSINESS = {
   name: "Meguiar's Ankara",
   shortName: "Meguiar's Ankara",
+  category: "Premium Oto Yıkama & Detailing Stüdyosu",
   phone: "0533 928 54 67",
   phoneRaw: "+905339285467",
   address: {
@@ -16,208 +16,263 @@ export const BUSINESS = {
     postalCode: "06800",
     full: "Beytepe, Enver Türkileri Sok No:8/F, 06800 Çankaya/Ankara",
   },
+  hours: "Pazartesi – Cumartesi: 09:30 – 18:30 (Pazar Kapalı)",
   maps: {
     url: "https://www.google.com/maps/place/Meguiars+Ankara/@39.869608,32.6683182,14z/data=!4m9!1m2!2m1!1soto+y%C4%B1kama!3m5!1s0x14d339bde89c5477:0x4b5a8c863a52e0af!8m2!3d39.8696078!4d32.7064272!16s%2Fg%2F11y0mfvf7k!5m1!1e1",
-    photosUrl: "https://www.google.com/maps/place/Meguiars+Ankara/@39.8696078,32.7064272,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipN!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com!7i4032!8i3024!4m9!1m2!2m1!1soto+y%C4%B1kama!3m5!1s0x14d339bde89c5477:0x4b5a8c863a52e0af!8m2!3d39.8696078!4d32.7064272!16s%2Fg%2F11y0mfvf7k!5m1!1e1",
     embed:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12202.543!2d32.6683182!3d39.869608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d339bde89c5477%3A0x4b5a8c863a52e0af!2sMeguiars%20Ankara!5e0!3m2!1str!2str!4v1698000000000!5m2!1str!2str",
   },
 } as const;
 
-// WhatsApp mesajları — bağlama göre özelleştirilmiş
+// WhatsApp bağlamsal mesajları
 export const WA_MESSAGES = {
   general:
     "Merhaba, Meguiar's Ankara'dan oto yıkama / araç bakım hizmeti almak istiyorum. Randevu hakkında bilgi alabilir miyim?",
   appointment:
-    "Merhaba, Meguiar's Ankara'dan randevu almak istiyorum. Müsait günlerinizi öğrenebilir miyim?",
-  interior:
-    "Merhaba, Detaylı İç Temizlik hizmeti hakkında bilgi almak istiyorum.",
-  exterior:
-    "Merhaba, Dış Detaylı Temizlik hizmeti hakkında bilgi almak istiyorum.",
-  polish: "Merhaba, Pasta & Cila hizmeti hakkında bilgi almak istiyorum.",
-  paint: "Merhaba, Boya Bakımı hizmeti hakkında bilgi almak istiyorum.",
-  wash: "Merhaba, Premium Oto Yıkama hizmeti hakkında bilgi almak istiyorum.",
-  wheel:
-    "Merhaba, Jant & Lastik Temizliği hizmeti hakkında bilgi almak istiyorum.",
+    "Merhaba, Meguiar's Ankara'dan randevu almak istiyorum. En yakın müsait gün ve saati öğrenebilir miyim?",
+  wash: "Merhaba, Premium Oto Yıkama hizmeti için randevu almak istiyorum.",
+  interior: "Merhaba, Detaylı İç Temizlik hizmeti hakkında detay ve randevu almak istiyorum.",
+  exterior: "Merhaba, Dış Detaylı Temizlik uygulaması hakkında bilgi ve randevu rica ediyorum.",
+  polish: "Merhaba, Pasta & Cila / Boya Düzeltme uygulaması için randevu talebinde bulunmak istiyorum.",
+  paint: "Merhaba, Boya Bakımı & Koruma uygulaması hakkında bilgi almak istiyorum.",
+  wheel: "Merhaba, Jant & Lastik Derin Temizlik ve Koruma hizmeti hakkında bilgi almak istiyorum.",
 };
 
-export function getWhatsAppUrl(messageKey: keyof typeof WA_MESSAGES): string {
-  return `https://wa.me/${BUSINESS.phoneRaw.replace("+", "")}?text=${encodeURIComponent(
-    WA_MESSAGES[messageKey]
-  )}`;
+export function getWhatsAppUrl(messageKey: keyof typeof WA_MESSAGES, customText?: string): string {
+  const text = customText || WA_MESSAGES[messageKey];
+  return `https://wa.me/${BUSINESS.phoneRaw.replace("+", "")}?text=${encodeURIComponent(text)}`;
 }
 
 // ─────────────────────────────────────────────────────────────────
-// HİZMETLER
+// HİZMETLER LİSTESİ
 // ─────────────────────────────────────────────────────────────────
-export const SERVICES = [
+export interface ServiceItem {
+  id: string;
+  code: string;
+  title: string;
+  category: string;
+  summary: string;
+  details: string[];
+  duration: string;
+  waKey: keyof typeof WA_MESSAGES;
+}
+
+export const SERVICES: ServiceItem[] = [
   {
     id: "wash",
-    icon: "droplets",
+    code: "SVC-01",
     title: "Premium Oto Yıkama",
-    description:
-      "Aracınızın dış yüzeyinin ve temel iç alanlarının özenli şekilde temizlenmesi.",
-    waKey: "wash" as keyof typeof WA_MESSAGES,
+    category: "Temel Bakım",
+    summary: "pH nötr aktif köpük, çiziksiz mikrofiber eldiven yıkaması ve özenli kurulama.",
+    details: [
+      "pH nötr ön yıkama köpüğü",
+      "Çift kova yöntemiyle eldivenli yıkama",
+      "Korumalı jant yüzey temizliği",
+      "Basınçlı hava ile su tahliyesi ve lekesiz kurulama",
+      "Hızlı iç süpürme ve paspas temizliği"
+    ],
+    duration: "45 – 60 dk",
+    waKey: "wash",
   },
   {
     id: "interior",
-    icon: "armchair",
-    title: "Detaylı İç Temizlik",
-    description:
-      "Koltuklar, zemin, plastik yüzeyler ve araç içindeki detayların kapsamlı temizliği.",
-    waKey: "interior" as keyof typeof WA_MESSAGES,
+    code: "SVC-02",
+    title: "Detaylı İç Temizlik & Hijyen",
+    category: "İç Bakım",
+    summary: "Koltuklar, taban halısı, tavan, plastik ve deri yüzeylerin derinlemesine hijyenik temizliği.",
+    details: [
+      "Kumaş & deri koltukların derinlemesine temizliği",
+      "Taban halısı ve bagaj alanının vakumlu arındırılması",
+      "Havalandırma ızgaraları ve konsol detay fırçalaması",
+      "Deri besleme ve mat koruyucu süt uygulaması",
+      "Anti-bakteriyel kabin havalandırması"
+    ],
+    duration: "3 – 5 saat",
+    waKey: "interior",
   },
   {
     id: "exterior",
-    icon: "sparkles",
-    title: "Dış Detaylı Temizlik",
-    description:
-      "Aracın dış yüzeyinde daha titiz ve detaylı temizlik uygulaması.",
-    waKey: "exterior" as keyof typeof WA_MESSAGES,
+    code: "SVC-03",
+    title: "Dış Detaylı Temizlik & Kil Uygulaması",
+    category: "Dış Bakım",
+    summary: "Boya yüzeyine yapışan demir tozu, reçine ve zift kalıntılarının arındırılması.",
+    details: [
+      "Demir tozu arındırıcı kimyasal ön işlem",
+      "Sentetik kil (clay bar) ile pürüzsüzleştirme",
+      "Zift ve reçine temizliği",
+      "Kapı araları ve bagaj fitili detay temizliği",
+      "Hidrofobik hızlı cila koruma katmanı"
+    ],
+    duration: "2 – 3 saat",
+    waKey: "exterior",
   },
   {
     id: "polish",
-    icon: "zap",
-    title: "Pasta & Cila",
-    description:
-      "Araç dış yüzeyinin görünümünü iyileştirmeye yönelik uygulamalar.",
-    waKey: "polish" as keyof typeof WA_MESSAGES,
+    code: "SVC-04",
+    title: "Pasta & Cila (Boya Düzeltme)",
+    category: "Yüzey Restorasyonu",
+    summary: "Hare izleri, kılcal çizikler ve matlaşmış verniğin düzeltilerek ilk günkü parlaklığa kavuşturulması.",
+    details: [
+      "Mikron kalınlık ölçümü ile boya analizi",
+      "Ağır ve orta çizik giderici pasta adımı",
+      "Hologram ve hare giderici cila uygulaması",
+      "Meguiar's profesyonel polisaj pedleri ve bileşikleri",
+      "Yüksek ayna parlaklığı bitişi"
+    ],
+    duration: "1 – 2 gün",
+    waKey: "polish",
   },
   {
     id: "paint",
-    icon: "shield",
-    title: "Boya Bakımı",
-    description:
-      "Araç boyasının parlaklığını ve görünümünü korumaya yönelik bakım.",
-    waKey: "paint" as keyof typeof WA_MESSAGES,
+    code: "SVC-05",
+    title: "Boya Koruma & Wax Uygulaması",
+    category: "Koruma",
+    summary: "Güneş ışınları, asit yağmurları ve dış etkenlere karşı koruyucu hidrofobik kalkan.",
+    details: [
+      "Yüksek dayanımlı sentetik polimer wax katmanı",
+      "UV koruması ve vernik solması engelleme",
+      "Üstün su ve kir iticilik (su boncuklanması)",
+      "Boya renginde derinlik ve ekstra parlaklık",
+      "Yıkama sonrası hızlı kurulama kolaylığı"
+    ],
+    duration: "2 – 4 saat",
+    waKey: "paint",
   },
   {
     id: "wheel",
-    icon: "circle",
-    title: "Jant & Lastik Temizliği",
-    description:
-      "Jant ve lastiklerde detaylı temizlik ve görünüm iyileştirme.",
-    waKey: "wheel" as keyof typeof WA_MESSAGES,
+    code: "SVC-06",
+    title: "Jant, Davlumbaz & Lastik Bakımı",
+    category: "Detay Bakım",
+    summary: "Balata tozu yanıkları, yol kiri ve lastik matlaşmasına karşı detaylı derin temizlik.",
+    details: [
+      "Asitsiz, fren kaliperlerine güvenli jant temizleyici",
+      "Davlumbaz içi çamur ve katran arındırma",
+      "Jant göbeği ve somun detay fırçalaması",
+      "Silikonsuz, leke bırakmayan mat lastik kondisyoneri",
+      "Fren tozu yapışmasını geciktirici koruyucu tabaka"
+    ],
+    duration: "45 – 60 dk",
+    waKey: "wheel",
   },
-] as const;
+];
 
 // ─────────────────────────────────────────────────────────────────
-// GÜVEN ALANI
+// GÜVEN SÜTUNLARI (Swiss Matrix)
 // ─────────────────────────────────────────────────────────────────
-export const TRUST_POINTS = [
+export const TRUST_MATRIX = [
   {
-    number: "01",
-    title: "Profesyonel Bakım",
-    desc: "Aracınıza özenli ve detaylı uygulama",
+    code: "01",
+    label: "Uzman Uygulama",
+    desc: "Aracın boya ve iç aksamına zarar vermeyen profesyonel teknikler ve doğru ekipmanlar.",
   },
   {
-    number: "02",
-    title: "Premium Ürünler",
-    desc: "Kaliteli bakım ürünleri ve profesyonel uygulama",
+    code: "02",
+    label: "Meguiar's & Premium Ürünler",
+    desc: "Test edilmiş, pH dengeli, otomotiv üreticileri standartlarında yüksek kaliteli bakım kimyasalları.",
   },
   {
-    number: "03",
-    title: "Beytepe'de Kolay Ulaşım",
-    desc: "Çankaya / Beytepe'de merkezi ve kolay ulaşılabilir lokasyon",
+    code: "03",
+    label: "Beytepe / Çankaya Lokasyonu",
+    desc: "Enver Türkileri Sokak'ta rahat araç teslimi ve kolay ulaşılabilir merkezi konum.",
   },
-] as const;
+];
 
 // ─────────────────────────────────────────────────────────────────
 // NEDEN BİZ
 // ─────────────────────────────────────────────────────────────────
-export const WHY_US = [
+export const STANDARDS = [
   {
-    title: "Özenli Çalışma",
-    desc: "Aracınızın her detayına dikkat eden profesyonel yaklaşım.",
+    title: "Çiziksiz Yıkama Protokolü",
+    desc: "Çift kova sistemi, grit guard filtreleri ve yumuşak mikrofiber yıkama eldivenleri ile fırçasız yıkama standardı.",
   },
   {
-    title: "Premium Görünüm",
-    desc: "Temizlik sonrasında aracın daha temiz, parlak ve bakımlı görünmesini hedefleyen uygulamalar.",
+    title: "Boya ve Vernik Güvenliği",
+    desc: "Boya kalınlığına uygun bileşik ve ped seçimiyle verniğe gereksiz aşındırma uygulamadan maksimum parlaklık.",
   },
   {
-    title: "Kolay İletişim",
-    desc: "Telefon ve WhatsApp üzerinden hızlıca randevu ve bilgi alabilme.",
+    title: "Şeffaf İletişim & Hızlı Randevu",
+    desc: "Telefon veya WhatsApp ile beklemeden net bilgi, uygun saat planlaması ve işlem durumu takibi.",
   },
   {
-    title: "Beytepe Konumu",
-    desc: "Çankaya / Beytepe bölgesinde rahatça ulaşabileceğiniz stüdyo.",
+    title: "Malzeme & Aksesuar Koruması",
+    desc: "Deri, alcantara, piano black ve krom yüzeylerin her birine özel geliştirilmiş ayrı bakım solüsyonları.",
   },
-] as const;
+];
 
 // ─────────────────────────────────────────────────────────────────
-// GALERİ — Detailing Stüdyosu ve Gerçek Uygulama Fotoğrafları
+// GALERİ (Google Maps & Gerçek Stüdyo Detay Fotoğrafları)
 // ─────────────────────────────────────────────────────────────────
-export const GALLERY_CATEGORIES = [
-  { id: "all", label: "Tümü" },
-  { id: "wash", label: "Dış Yıkama" },
-  { id: "interior", label: "İç Detay" },
-  { id: "polish", label: "Pasta & Cila" },
-  { id: "wheels", label: "Jant & Koruma" },
-] as const;
-
-export const GALLERY_IMAGES = [
+export const GALLERY_ITEMS = [
   {
-    id: "g1",
+    id: "g-gmaps-1",
+    title: "Meguiar's Ankara Stüdyo Uygulaması",
     category: "wash",
-    title: "Köpüklü Ön Yıkama & Detay",
+    categoryLabel: "Dış Yıkama",
+    src: "https://lh3.googleusercontent.com/gps-cs-s/AHRPTWmARKUx8JAX2BDI1381iZmI2ZnYlJT-9jFqYYrxuQO26kuPqJCm0rPRhGxWuPZ9afylvgbjkJQYjCwJd0_v7Y6M5S8o5FhbC3OUJGNbaUqfqQcp4hWsgZPef1G8VLrzzSDPL2IL4bfmWUw=w1200-h800-k-no",
+    source: "Google Haritalar",
+    alt: "Meguiar's Ankara Beytepe oto yıkama stüdyosu",
+  },
+  {
+    id: "g-wash-foam",
+    title: "Aktif Köpük Ön Yıkama",
+    category: "wash",
+    categoryLabel: "Dış Yıkama",
     src: "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=1200&q=85&auto=format&fit=crop",
-    alt: "Köpüklü oto yıkama uygulaması",
-    span: "col-span-1 md:col-span-2 row-span-2",
+    source: "Stüdyo Uygulama",
+    alt: "Köpüklü temas öncesi oto yıkama",
   },
   {
-    id: "g2",
+    id: "g-polish-rotary",
+    title: "Boya Düzeltme & Çizik Giderme",
     category: "polish",
-    title: "Boya Düzeltme & Parlatma",
-    src: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=85&auto=format&fit=crop",
+    categoryLabel: "Pasta & Cila",
+    src: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
     alt: "Pasta cila boya düzeltme işlemi",
-    span: "col-span-1 md:col-span-1 row-span-1",
   },
   {
-    id: "g3",
+    id: "g-interior-clean",
+    title: "Deri Koltuk & Detay Temizliği",
     category: "interior",
-    title: "Deri Koltuk & İç Detay Temizliği",
-    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&auto=format&fit=crop",
-    alt: "Araç içi deri ve döşeme temizliği",
-    span: "col-span-1 md:col-span-1 row-span-1",
+    categoryLabel: "İç Detay",
+    src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
+    alt: "Araç içi deri ve koltuk detay temizliği",
   },
   {
-    id: "g4",
+    id: "g-wheels-deep",
+    title: "Jant & Fren Kaliperi Temizliği",
     category: "wheels",
-    title: "Jant & Lastik Derin Temizlik",
-    src: "https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?w=800&q=85&auto=format&fit=crop",
-    alt: "Jant temizleme ve parlatma",
-    span: "col-span-1 md:col-span-1 row-span-1",
+    categoryLabel: "Jant & Detay",
+    src: "https://images.unsplash.com/photo-1600861195091-690c92f1d2cc?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
+    alt: "Jant ve lastik derinlemesine temizlik",
   },
   {
-    id: "g5",
+    id: "g-hydrophobic-beads",
+    title: "Boya Koruma & Hidrofobik Yüzey",
     category: "polish",
-    title: "Boya Bakımı & Su İticilik",
-    src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=85&auto=format&fit=crop",
-    alt: "Boya koruma ve parlak yüzey",
-    span: "col-span-1 md:col-span-1 row-span-1",
+    categoryLabel: "Boya Koruma",
+    src: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
+    alt: "Boya koruma su iticilik parlaklık",
   },
   {
-    id: "g6",
-    category: "wash",
-    title: "Detaylı Dış Yıkama & Kurulama",
-    src: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=85&auto=format&fit=crop",
-    alt: "Detaylı oto yıkama ve yüzey temizliği",
-    span: "col-span-1 md:col-span-1 row-span-1",
-  },
-  {
-    id: "g7",
+    id: "g-cockpit-hygiene",
+    title: "Konsol & Havalandırma Hijyeni",
     category: "interior",
-    title: "Kokpit & Havalandırma Hijyeni",
-    src: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=85&auto=format&fit=crop",
-    alt: "Araç kokpit ve konsol detay temizliği",
-    span: "col-span-1 md:col-span-1 row-span-1",
+    categoryLabel: "İç Detay",
+    src: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
+    alt: "Kokpit ve klima ızgarası hijyenik temizlik",
   },
   {
-    id: "g8",
-    category: "wheels",
+    id: "g-final-delivery",
     title: "Kusursuz Teslimat Parlaklığı",
-    src: "https://images.unsplash.com/photo-1614026480209-cd9934144671?w=800&q=85&auto=format&fit=crop",
-    alt: "Detaylı araç teslimatı ve stüdyo parlaklığı",
-    span: "col-span-1 md:col-span-1 row-span-1",
+    category: "wash",
+    categoryLabel: "Teslimat",
+    src: "https://images.unsplash.com/photo-1614026480209-cd9934144671?w=1200&q=85&auto=format&fit=crop",
+    source: "Stüdyo Uygulama",
+    alt: "Detaylı oto yıkama ve parlak teslimat",
   },
-] as const;
+];

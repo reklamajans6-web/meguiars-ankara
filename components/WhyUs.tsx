@@ -1,63 +1,41 @@
 "use client";
 
-import { WHY_US } from "@/lib/data";
+import { STANDARDS } from "@/lib/data";
 
 export default function WhyUs() {
   return (
-    <section id="neden-biz" className="section-py bg-[#0d0f14]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+    <section id="standartlar" className="section-py bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          {/* Sol — başlık + görsel */}
-          <div className="lg:sticky lg:top-28">
-            <span className="accent-line" />
-            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white leading-tight mb-5">
-              Aracınızı Güvenle<br />Teslim Edin
-            </h2>
-            <p className="text-white/40 text-[15px] leading-relaxed font-light mb-10 max-w-sm">
-              Profesyonel uygulama, doğru ürünler ve aracınızın her detayına
-              verilen özen.
-            </p>
-
-            {/* Görsel */}
-            <div className="relative overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <img
-                src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&q=85&auto=format&fit=crop"
-                alt="Profesyonel araç bakımı"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f14] via-transparent to-transparent opacity-70" />
-            </div>
+        {/* ── Header ── */}
+        <div className="max-w-2xl mb-12 pb-6 border-b border-neutral-200">
+          <div className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#e4002b] mb-2">
+            Kalite Protokolü
           </div>
-
-          {/* Sağ — avantaj listesi */}
-          <div className="flex flex-col">
-            {WHY_US.map((item, i) => (
-              <div
-                key={i}
-                className="group flex gap-6 py-8 border-b border-white/[0.06] last:border-0 hover:bg-white/[0.015] px-4 -mx-4 transition-colors duration-300"
-              >
-                {/* Sol: numara */}
-                <div className="flex-shrink-0 pt-0.5">
-                  <span className="text-[11px] font-mono text-white/20 group-hover:text-white/40 transition-colors">
-                    0{i + 1}
-                  </span>
-                </div>
-
-                {/* Sağ: metin */}
-                <div>
-                  <h3 className="font-heading font-semibold text-white text-[17px] mb-2 group-hover:text-white transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-[13px] text-white/40 leading-relaxed">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-neutral-950 tracking-tight">
+            Neden Meguiar&apos;s Ankara?
+          </h2>
         </div>
+
+        {/* ── 4 Standards Grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {STANDARDS.map((std, i) => (
+            <div key={i} className="flex gap-5 items-start p-6 bg-[#f8f9fa] border border-neutral-200">
+              <span className="text-xl font-heading font-black text-[#e4002b] tabular-nums flex-shrink-0">
+                0{i + 1}
+              </span>
+              <div>
+                <h3 className="font-heading font-bold text-neutral-950 text-base sm:text-lg mb-2">
+                  {std.title}
+                </h3>
+                <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-normal">
+                  {std.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

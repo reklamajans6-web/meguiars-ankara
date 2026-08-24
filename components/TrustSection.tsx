@@ -1,46 +1,22 @@
 "use client";
 
+import { TRUST_MATRIX } from "@/lib/data";
+
 export default function TrustSection() {
-  const items = [
-    {
-      label: "Profesyonel Bakım",
-      desc: "Aracınıza özenli ve detaylı uygulama",
-    },
-    {
-      label: "Premium Ürünler",
-      desc: "Kaliteli bakım ürünleri ve profesyonel uygulama",
-    },
-    {
-      label: "Beytepe'de",
-      desc: "Çankaya / Beytepe'de kolay ulaşım",
-    },
-  ];
-
   return (
-    <section className="bg-[#0d0f14] border-b border-white/[0.06]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3">
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className={`py-8 px-8 flex items-start gap-5 ${
-                i < items.length - 1 ? "md:border-r border-white/[0.06]" : ""
-              } ${i > 0 ? "border-t md:border-t-0 border-white/[0.06]" : ""}`}
-            >
-              {/* Numara */}
-              <span
-                className="text-[11px] font-mono mt-0.5 flex-shrink-0"
-                style={{ color: "#c9a96e", opacity: 0.7 }}
-              >
-                0{i + 1}
+    <section className="bg-white border-b border-neutral-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-200">
+          {TRUST_MATRIX.map((item) => (
+            <div key={item.code} className="py-8 sm:py-10 px-6 lg:px-8 flex items-start gap-5">
+              <span className="font-heading font-black text-2xl text-[#e4002b] tabular-nums">
+                {item.code}
               </span>
-
-              {/* Metin */}
               <div>
-                <p className="font-heading font-semibold text-white text-[14px] tracking-wide mb-1">
+                <h3 className="font-heading font-bold text-neutral-900 text-base sm:text-lg mb-1.5">
                   {item.label}
-                </p>
-                <p className="text-white/40 text-[13px] leading-snug">
+                </h3>
+                <p className="text-neutral-600 text-xs sm:text-sm leading-relaxed font-normal">
                   {item.desc}
                 </p>
               </div>

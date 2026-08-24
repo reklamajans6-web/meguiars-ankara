@@ -1,38 +1,33 @@
 "use client";
 
-import { MapPin, Phone, ExternalLink, MessageCircle, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, ExternalLink, MessageCircle } from "lucide-react";
 import { BUSINESS, getWhatsAppUrl } from "@/lib/data";
 
 export default function Location() {
   return (
-    <section id="iletisim" className="section-py bg-[#0a0a0a] relative">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
-        
-        {/* ── Balanced Header ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-white/[0.08]">
+    <section id="iletisim" className="section-py bg-white border-t border-neutral-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Section Header ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 pb-6 border-b border-neutral-200">
           <div>
-            <div className="inline-flex items-center gap-2 mb-3">
-              <span className="w-6 h-[1px] bg-[#c9a96e]" />
-              <span className="text-[11px] tracking-[0.25em] uppercase font-semibold text-[#c9a96e]">
-                Konum & İletişim
-              </span>
+            <div className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#e4002b] mb-2">
+              Ulaşım & Adres
             </div>
-            <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
-              Beytepe&apos;de Bizi{" "}
-              <span style={{ color: "#c9a96e" }}>Ziyaret Edin</span>
+            <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-neutral-950 tracking-tight">
+              Beytepe Stüdyomuzu Ziyaret Edin
             </h2>
           </div>
-
-          <div className="max-w-md text-white/50 text-sm sm:text-base font-light">
-            Çankaya / Beytepe stüdyomuzda aracınıza özel bakım ve randevu için bize dilediğiniz zaman ulaşabilirsiniz.
-          </div>
+          <p className="text-neutral-600 text-sm sm:text-base max-w-md font-normal leading-relaxed">
+            Çankaya / Beytepe bölgesinde kolay ulaşılabilir konumda bulunan stüdyomuza aracınızı güvenle teslim edebilirsiniz.
+          </p>
         </div>
 
         {/* ── Content Grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-          
-          {/* Map (7 cols) */}
-          <div className="lg:col-span-7 relative bg-[#111318] border border-white/[0.08] overflow-hidden min-h-[380px] lg:min-h-[440px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+
+          {/* Map Frame (7 cols) */}
+          <div className="lg:col-span-7 bg-neutral-100 border border-neutral-300 relative min-h-[380px] lg:min-h-[440px] shadow-xs">
             <iframe
               src={BUSINESS.maps.embed}
               width="100%"
@@ -42,7 +37,7 @@ export default function Location() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Meguiar's Ankara Konum"
-              className="grayscale contrast-[1.1] invert opacity-80 hover:opacity-95 transition-opacity"
+              className="w-full h-full"
             />
             {/* Direct Directions Badge */}
             <div className="absolute top-4 right-4 z-10">
@@ -50,81 +45,93 @@ export default function Location() {
                 href={BUSINESS.maps.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 text-[11px] font-bold tracking-wider uppercase bg-[#0a0a0a]/90 text-white hover:text-[#c9a96e] border border-white/20 backdrop-blur-sm transition-all"
+                className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold tracking-wider uppercase bg-white text-neutral-900 hover:text-[#e4002b] border border-neutral-300 shadow-md transition-colors"
               >
-                <ExternalLink size={12} />
-                Haritada Aç
+                <ExternalLink size={13} className="text-[#e4002b]" />
+                Google Haritalar&apos;da Aç
               </a>
             </div>
           </div>
 
           {/* Info Card (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col justify-between bg-[#111318] border border-white/[0.08] p-8">
+          <div className="lg:col-span-5 bg-[#f8f9fa] border border-neutral-200 p-6 sm:p-8 flex flex-col justify-between">
             
             <div className="space-y-6">
+              
               {/* Adres */}
               <div>
-                <div className="flex items-center gap-2 mb-2">
-                  <MapPin size={15} style={{ color: "#c9a96e" }} />
-                  <span className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#c9a96e]">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <MapPin size={15} className="text-[#e4002b]" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
                     Açık Adres
                   </span>
                 </div>
-                <p className="text-white font-medium text-base font-heading">
+                <p className="text-sm sm:text-base font-bold text-neutral-950 font-heading">
                   {BUSINESS.address.street}
                 </p>
-                <p className="text-white/50 text-sm mt-0.5">
+                <p className="text-xs sm:text-sm text-neutral-600 mt-0.5">
                   {BUSINESS.address.postalCode} {BUSINESS.address.district} / {BUSINESS.address.city}
                 </p>
               </div>
 
               {/* Telefon */}
-              <div className="pt-6 border-t border-white/[0.06]">
-                <div className="flex items-center gap-2 mb-2">
-                  <Phone size={15} style={{ color: "#c9a96e" }} />
-                  <span className="text-[11px] tracking-[0.2em] uppercase font-semibold text-[#c9a96e]">
-                    İletişim & Randevu
+              <div className="pt-5 border-t border-neutral-200">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Phone size={15} className="text-[#e4002b]" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
+                    Telefonla İletişim
                   </span>
                 </div>
                 <a
                   href={`tel:${BUSINESS.phoneRaw}`}
-                  className="text-white font-heading font-bold text-2xl hover:text-[#c9a96e] transition-colors block"
+                  className="text-xl sm:text-2xl font-black font-heading text-neutral-950 hover:text-[#e4002b] transition-colors tabular-nums block"
                 >
                   {BUSINESS.phone}
                 </a>
-                <span className="text-white/40 text-xs mt-1 block">
-                  Telefonla arayabilir veya WhatsApp üzerinden mesaj gönderebilirsiniz.
-                </span>
               </div>
+
+              {/* Saatler */}
+              <div className="pt-5 border-t border-neutral-200">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Clock size={15} className="text-[#e4002b]" />
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-neutral-400">
+                    Çalışma Saatleri
+                  </span>
+                </div>
+                <p className="text-xs sm:text-sm font-semibold text-neutral-800">
+                  {BUSINESS.hours}
+                </p>
+              </div>
+
             </div>
 
-            {/* Action Buttons */}
-            <div className="pt-8 mt-6 border-t border-white/[0.06] flex flex-col gap-3">
+            {/* Quick Action Buttons */}
+            <div className="pt-6 mt-6 border-t border-neutral-200 flex flex-col sm:flex-row gap-3">
               <a
-                href={getWhatsAppUrl("general")}
+                href={getWhatsAppUrl("appointment")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-4 text-xs font-bold tracking-[0.15em] uppercase text-black transition-opacity hover:opacity-90 shadow-lg shadow-[#c9a96e]/10"
-                style={{ background: "#c9a96e" }}
+                className="flex-1 py-3.5 px-4 bg-[#e4002b] hover:bg-[#c70025] text-white text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-xs text-center"
               >
                 <MessageCircle size={15} />
-                WhatsApp ile İletişime Geç
+                WhatsApp&apos;tan Yaz
               </a>
 
               <a
                 href={BUSINESS.maps.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 w-full py-3.5 text-xs font-semibold tracking-wider uppercase text-white/80 border border-white/15 hover:border-white/40 hover:bg-white/[0.04] transition-all"
+                className="flex-1 py-3.5 px-4 bg-white hover:bg-neutral-100 text-neutral-900 border border-neutral-300 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors text-center"
               >
-                <ExternalLink size={13} />
-                Google Haritalar Yol Tarifi
+                <ExternalLink size={14} className="text-[#e4002b]" />
+                Yol Tarifi
               </a>
             </div>
 
           </div>
 
         </div>
+
       </div>
     </section>
   );

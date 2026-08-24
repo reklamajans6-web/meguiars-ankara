@@ -1,12 +1,14 @@
 "use client";
 
-import { Phone, MapPin } from "lucide-react";
+import { Phone, MapPin, MessageCircle, ExternalLink } from "lucide-react";
 import { BUSINESS, getWhatsAppUrl } from "@/lib/data";
 
 const NAV_LINKS = [
-  { label: "Ana Sayfa", href: "#hero" },
   { label: "Hizmetler", href: "#hizmetler" },
+  { label: "Paket Hesapla", href: "#hesapla" },
+  { label: "Standartlar", href: "#standartlar" },
   { label: "Galeri", href: "#galeri" },
+  { label: "Öncesi / Sonrası", href: "#oncesi-sonrasi" },
   { label: "İletişim", href: "#iletisim" },
 ];
 
@@ -16,36 +18,50 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#111318] border-t border-white/5">
+    <footer className="bg-white border-t border-neutral-200 text-neutral-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Brand */}
-          <div>
-            <div className="mb-4">
-              <span className="text-[10px] tracking-[0.25em] text-[#c9a96e] uppercase font-medium block">
-                Premium Araç Bakım
-              </span>
-              <span className="text-xl font-bold tracking-tight text-white font-heading block">
-                MEGUIAR&apos;S ANKARA
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-neutral-200">
+          
+          {/* Col 1: Brand */}
+          <div className="md:col-span-2 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-[#e4002b] text-white flex items-center justify-center font-bold text-sm">
+                M
+              </div>
+              <div>
+                <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#e4002b] block leading-none">
+                  Beytepe · Çankaya
+                </span>
+                <span className="text-lg font-extrabold tracking-tight text-neutral-950 font-heading">
+                  MEGUIAR&apos;S ANKARA
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-neutral-600 max-w-sm leading-relaxed">
+              Beytepe Çankaya&apos;da profesyonel oto yıkama, pasta & cila, boya koruma ve detaylı araç içi hijyen uygulamaları.
+            </p>
+
+            <div className="pt-2">
+              <span className="inline-block text-[11px] font-mono text-neutral-500 bg-neutral-100 px-3 py-1 border border-neutral-200">
+                {BUSINESS.hours}
               </span>
             </div>
-            <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Beytepe / Çankaya&apos;da profesyonel oto yıkama ve araç bakım
-              hizmetleri.
-            </p>
           </div>
 
-          {/* Links */}
+          {/* Col 2: Navigation */}
           <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/30 font-medium mb-5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-950 mb-4 font-heading">
               Sayfalar
             </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <button
+                    type="button"
                     onClick={() => handleClick(link.href)}
-                    className="text-sm text-white/50 hover:text-white transition-colors text-left"
+                    className="text-xs text-neutral-600 hover:text-[#e4002b] transition-colors cursor-pointer text-left"
                   >
                     {link.label}
                   </button>
@@ -54,52 +70,50 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h4 className="text-xs tracking-[0.2em] uppercase text-white/30 font-medium mb-5">
+          {/* Col 3: Contact & Direct Actions */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-950 mb-4 font-heading">
               İletişim
             </h4>
-            <div className="flex flex-col gap-4">
+
+            <div className="space-y-2 text-xs text-neutral-600">
               <a
                 href={`tel:${BUSINESS.phoneRaw}`}
-                className="flex items-center gap-3 text-sm text-white/50 hover:text-white transition-colors"
+                className="flex items-center gap-2 font-bold text-neutral-900 hover:text-[#e4002b] transition-colors"
               >
-                <Phone size={14} style={{ color: "#c9a96e" }} />
-                {BUSINESS.phone}
+                <Phone size={13} className="text-[#e4002b]" />
+                <span className="tabular-nums">{BUSINESS.phone}</span>
               </a>
-              <div className="flex items-start gap-3 text-sm text-white/50">
-                <MapPin
-                  size={14}
-                  className="flex-shrink-0 mt-0.5"
-                  style={{ color: "#c9a96e" }}
-                />
-                <span className="leading-relaxed">
-                  {BUSINESS.address.street},{" "}
-                  {BUSINESS.address.district} / {BUSINESS.address.city}
-                </span>
+
+              <div className="flex items-start gap-2 pt-1">
+                <MapPin size={13} className="text-[#e4002b] mt-0.5 flex-shrink-0" />
+                <span>{BUSINESS.address.full}</span>
               </div>
+            </div>
+
+            <div className="pt-3">
               <a
                 href={getWhatsAppUrl("general")}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-black px-4 py-2.5 w-fit transition-opacity hover:opacity-90"
-                style={{ background: "#c9a96e" }}
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-[#e4002b] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#c70025] transition-colors"
               >
+                <MessageCircle size={13} />
                 WhatsApp
               </a>
             </div>
           </div>
+
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p className="text-xs text-white/20">
-            © 2026 Meguiar&apos;s Ankara. Tüm hakları saklıdır.
-          </p>
-          <p className="text-xs text-white/15">
-            Beytepe · Çankaya · Ankara
-          </p>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+          <p>© 2026 Meguiar&apos;s Ankara. Tüm hakları saklıdır.</p>
+          <div className="flex items-center gap-4 text-[11px]">
+            <span>Beytepe Mahallesi, Çankaya / Ankara</span>
+          </div>
         </div>
+
       </div>
     </footer>
   );

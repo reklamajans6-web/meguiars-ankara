@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustSection from "@/components/TrustSection";
 import Services from "@/components/Services";
+import ServiceCalculator from "@/components/ServiceCalculator";
 import WhyUs from "@/components/WhyUs";
 import Gallery from "@/components/Gallery";
 import BeforeAfter from "@/components/BeforeAfter";
@@ -14,11 +15,12 @@ import MobileCTA from "@/components/MobileCTA";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen bg-white text-neutral-900 selection:bg-[#e4002b] selection:text-white">
       <Navbar />
       <Hero />
       <TrustSection />
       <Services />
+      <ServiceCalculator />
       <WhyUs />
       <Gallery />
       <BeforeAfter />
