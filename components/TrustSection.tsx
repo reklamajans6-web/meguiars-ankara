@@ -1,36 +1,47 @@
 "use client";
 
-import { ShieldCheck, Star, MapPin } from "lucide-react";
-import { TRUST_POINTS } from "@/lib/data";
-
-const ICONS: Record<string, React.ReactNode> = {
-  "shield-check": <ShieldCheck size={22} strokeWidth={1.5} />,
-  star: <Star size={22} strokeWidth={1.5} />,
-  "map-pin": <MapPin size={22} strokeWidth={1.5} />,
-};
-
 export default function TrustSection() {
+  const items = [
+    {
+      label: "Profesyonel Bakım",
+      desc: "Aracınıza özenli ve detaylı uygulama",
+    },
+    {
+      label: "Premium Ürünler",
+      desc: "Kaliteli bakım ürünleri ve profesyonel uygulama",
+    },
+    {
+      label: "Beytepe'de",
+      desc: "Çankaya / Beytepe'de kolay ulaşım",
+    },
+  ];
+
   return (
-    <section className="bg-[#111318] border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/5">
-          {TRUST_POINTS.map((point, i) => (
+    <section className="bg-[#0d0f14] border-b border-white/[0.06]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="grid grid-cols-1 md:grid-cols-3">
+          {items.map((item, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 px-6 py-8 sm:py-10"
+              className={`py-8 px-8 flex items-start gap-5 ${
+                i < items.length - 1 ? "md:border-r border-white/[0.06]" : ""
+              } ${i > 0 ? "border-t md:border-t-0 border-white/[0.06]" : ""}`}
             >
-              <div
-                className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-none"
-                style={{ color: "#c9a96e" }}
+              {/* Numara */}
+              <span
+                className="text-[11px] font-mono mt-0.5 flex-shrink-0"
+                style={{ color: "#c9a96e", opacity: 0.7 }}
               >
-                {ICONS[point.icon]}
-              </div>
+                0{i + 1}
+              </span>
+
+              {/* Metin */}
               <div>
-                <h3 className="font-heading font-semibold text-white text-base mb-1">
-                  {point.title}
-                </h3>
-                <p className="text-sm text-white/50 leading-relaxed">
-                  {point.desc}
+                <p className="font-heading font-semibold text-white text-[14px] tracking-wide mb-1">
+                  {item.label}
+                </p>
+                <p className="text-white/40 text-[13px] leading-snug">
+                  {item.desc}
                 </p>
               </div>
             </div>

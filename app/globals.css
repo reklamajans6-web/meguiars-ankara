@@ -70,11 +70,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .accent-line {
-  display: inline-block;
-  width: 40px;
-  height: 2px;
+  display: block;
+  width: 32px;
+  height: 1px;
   background: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* ─── Body letter spacing — subtle premium feel ─── */
+body {
+  letter-spacing: 0.01em;
 }
 
 /* ─── Before/After Slider ─── */
@@ -101,7 +107,7 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 1px;
   background: white;
   left: 50%;
   transform: translateX(-50%);
@@ -115,11 +121,11 @@ h1, h2, h3, h4, h5, h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
 .ba-handle::after {
@@ -129,18 +135,9 @@ h1, h2, h3, h4, h5, h6 {
   left: 50%;
   transform: translate(-50%, -50%);
   color: var(--black);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
   z-index: 1;
-}
-
-/* ─── Service card hover line ─── */
-.service-card {
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-.service-card:hover {
-  border-bottom-color: var(--accent);
 }
 
 /* ─── Mobile sticky CTA ─── */
@@ -152,14 +149,25 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ─── Section spacing ─── */
 .section-py {
-  padding-top: 96px;
-  padding-bottom: 96px;
+  padding-top: 112px;
+  padding-bottom: 112px;
 }
 
 @media (max-width: 768px) {
   .section-py {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  /* Mobilde hero daha kısa */
+  #hero {
+    min-height: 85svh !important;
+  }
+
+  /* Mobilde H1 48px civarında */
+  #hero h1 {
+    font-size: 2.75rem !important;
+    line-height: 1.08 !important;
   }
 }
 
@@ -167,7 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -176,5 +184,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-fade-up {
-  animation: fadeUp 0.6s ease forwards;
+  animation: fadeUp 0.5s ease forwards;
 }
+
